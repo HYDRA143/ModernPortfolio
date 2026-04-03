@@ -1,8 +1,8 @@
 import React from 'react';
-import '../../pages/About/AboutPage.css'
 import { Link } from 'react-router-dom';
 import cv from '../../cv/cv.pdf';
 import { ButtomGet } from '../ButtomGet/ButtomGet';
+import { PROFILE_NAME } from '../../constants/profile';
 
 /* Multi idioma */
 import { FormattedMessage } from 'react-intl';
@@ -27,7 +27,7 @@ const About = () => (
                 <h4>
                     <FormattedMessage
                         id='description'
-                        defaultMessage='My name is Esteban Nahuel Carrizo and I am a full stack developer.'
+                        defaultMessage={`My name is ${PROFILE_NAME} and I am a full stack developer.`}
                     />
                 </h4>
                 <p>
@@ -58,39 +58,6 @@ const About = () => (
                     </li>
                     <li>
                         <p><span>Email:</span> YDV129111@GMAIL.COM</p>
-                    </li>
-                    <li>
-                        <p>
-                            <span>
-                                <FormattedMessage
-                                    id='from'
-                                    defaultMessage='From:'
-                                />
-                            </span>
-                            India
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <span>
-                                Hobbies:{" "}
-                            </span>
-                                Gaming, Programming and Outdoor Sports
-                        </p>
-                    </li>
-                    <li>
-                        <p><span>Email:</span> YDV129111@GMAIL.COM</p>
-                    </li>
-                    <li>
-                        <p>
-                            <span>
-                                <FormattedMessage
-                                    id='from'
-                                    defaultMessage='From:'
-                                />
-                            </span>
-                            India
-                        </p>
                     </li>
                     <li>
                         <p>

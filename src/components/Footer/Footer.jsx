@@ -1,5 +1,5 @@
 import React from 'react';
-import './Footer.css';
+import { PROFILE_NAME, PROFILE_URL } from '../../constants/profile';
 
 /* Multi idioma */
 import {FormattedMessage} from 'react-intl';
@@ -16,16 +16,16 @@ const Footer = () =>{
                     <p>
                         <FormattedMessage
                             id='footer-info'
-                            defaultMessage='Page created by NEERAJ YADAV'
+                            defaultMessage={`Page created by ${PROFILE_NAME}`}
                         />
                     </p>
                     <p>&copy; {fecha}. All Rights Reserved.</p>
                 </div>
                 <div className="redes-sociales">
-                    <a href="https://www.linkedin.com/in/neerajyadav" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/neerajyadav" target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i></a>
-                    <a href="https://www.instagram.com/neerajyadav" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a>
-                    <a href="https://twitter.com/neerajyadav" target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter"></i></a>
+                    <a href={PROFILE_URL} target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin"></i></a>
+                    <a href={PROFILE_URL} target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i></a>
+                    <a href={PROFILE_URL} target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a>
+                    <a href={PROFILE_URL} target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter"></i></a>
                 </div>
             </div>
         </footer>

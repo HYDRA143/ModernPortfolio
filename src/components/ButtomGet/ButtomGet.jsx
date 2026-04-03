@@ -1,6 +1,5 @@
 import React from 'react'
 import Icon from './icon'
-import './buttom.css'
 
 import { FormattedMessage } from 'react-intl';
 

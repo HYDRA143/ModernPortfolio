@@ -1,7 +1,6 @@
 import React from 'react';
 import {useEffect, useState} from 'react';
 
-import './ScrollToTop.css';
 
 const ScrollToTop = () => {
     const [backToTopButtom, setBackTopButton]= useState(false);

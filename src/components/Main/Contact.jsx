@@ -1,6 +1,6 @@
 import React from 'react';
-import '../../pages/Contact/ContactPage.css'
 import { TypeAnimation } from 'react-type-animation';
+import { PROFILE_URL } from '../../constants/profile';
 
 /* Multi idioma */
 import { FormattedMessage } from 'react-intl';
@@ -37,7 +37,7 @@ const Contact = () => (
         </h3>
 
         <div className="icons">
-            <a href="https://mail.google.com" target="_blank" rel="noopener noreferrer" data-aos="zoom-in">
+            <a href={PROFILE_URL} target="_blank" rel="noopener noreferrer" data-aos="zoom-in">
                 <div className="layer">
                     <span></span>
                     <span></span>
@@ -49,7 +49,7 @@ const Contact = () => (
                     Gmail
                 </div>
             </a>
-            <a href="https://web.whatsapp.com" target="_blank" rel="noopener noreferrer" data-aos="zoom-in">
+            <a href={PROFILE_URL} target="_blank" rel="noopener noreferrer" data-aos="zoom-in">
                 <div className="layer">
                     <span></span>
                     <span></span>
@@ -61,7 +61,7 @@ const Contact = () => (
                     Whatsapp
                 </div>
             </a>
-            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" data-aos="zoom-in">
+            <a href={PROFILE_URL} target="_blank" rel="noopener noreferrer" data-aos="zoom-in">
                 <div className="layer">
                     <span></span>
                     <span></span>
@@ -73,7 +73,7 @@ const Contact = () => (
                     Instagram
                 </div>
             </a>
-            <a href="https://web.telegram.org" target="_blank" rel="noopener noreferrer" data-aos="zoom-in">
+            <a href={PROFILE_URL} target="_blank" rel="noopener noreferrer" data-aos="zoom-in">
                 <div className="layer">
                     <span></span>
                     <span></span>
@@ -85,7 +85,7 @@ const Contact = () => (
                     telegram
                 </div>
             </a>
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" data-aos="zoom-in">
+            <a href={PROFILE_URL} target="_blank" rel="noopener noreferrer" data-aos="zoom-in">
                 <div className="layer">
                     <span></span>
                     <span></span>
@@ -97,7 +97,7 @@ const Contact = () => (
                     Linkedin
                 </div>
             </a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" data-aos="zoom-in">
+            <a href={PROFILE_URL} target="_blank" rel="noopener noreferrer" data-aos="zoom-in">
                 <div className="layer">
                     <span></span>
                     <span></span>
