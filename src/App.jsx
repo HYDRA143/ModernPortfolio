@@ -13,11 +13,24 @@ const ProjectGame = lazy(() => import("./pages/Project/ProjectGame"));
 
 function App() {
   useEffect(() => {
-    AOS.init({
-      duration: 700,
-      once: true,
-      easing: "ease-out-cubic",
-    });
+    const initAos = () => {
+      AOS.init({
+        duration: 600,
+        once: true,
+        easing: "ease-out-cubic",
+        mirror: false,
+        offset: 50,
+        throttleDelay: 120,
+        disable: () =>
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      });
+    };
+
+    if (typeof window.requestIdleCallback === "function") {
+      window.requestIdleCallback(initAos, { timeout: 1200 });
+    } else {
+      window.setTimeout(initAos, 200);
+    }
   }, []);
 
   return (

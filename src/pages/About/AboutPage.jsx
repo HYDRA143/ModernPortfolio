@@ -22,9 +22,11 @@ const About = () => {
           <div className="sobre-mi-container">
             <div className="sobre-mi-img-container">
               <img
-                src={imagePath("home/home.png")}
+                src={imagePath("home/home.svg")}
                 alt=""
                 className="sobre-mi-img"
+                loading="eager"
+                decoding="async"
               />
 
               <a

@@ -229,6 +229,8 @@ body.dark .btn::after {
   width: 100%;
   position: fixed;
   z-index: -1;
+  opacity: 0.7;
+  pointer-events: none;
 }
 
 .particles-2-css {
@@ -237,7 +239,14 @@ body.dark .btn::after {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1 !important;
+  z-index: 2 !important;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+.parallax-section {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
 }
 
 /********************** Media Q **********************/
@@ -335,11 +344,19 @@ body.dark .cssbuttons-io-button .icon {
 /********************** Inicio **********************/
 
 .contenido {
-  background: #010101;
+  background: linear-gradient(
+    180deg,
+    rgba(247, 251, 255, 0.82) 0%,
+    rgba(238, 247, 255, 0.86) 100%
+  );
   width: 100vw;
   height: 100vh;
   background-position: center center;
   background-size: cover;
+}
+
+body.dark .contenido {
+  background: rgba(1, 1, 1, 0.8);
 }
 
 .inicio {
@@ -355,9 +372,13 @@ body.dark .cssbuttons-io-button .icon {
 
 .inicio .titulo p {
   font-size: 3.5rem;
-  color: var(--white);
+  color: var(--black);
   position: relative;
   font-weight: 600;
+}
+
+body.dark .inicio .titulo p {
+  color: var(--white);
 }
 
 .inicio .titulo h1 {
@@ -367,6 +388,10 @@ body.dark .cssbuttons-io-button .icon {
 
 .wrapper {
   margin: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0 2rem;
 }
 .wrapper .button {
   display: flex;
@@ -374,8 +399,7 @@ body.dark .cssbuttons-io-button .icon {
   justify-content: flex-start;
   height: 60px;
   width: 60px;
-  float: left;
-  margin: 0 2rem;
+  margin: 0;
   overflow: hidden;
   color: #000;
   background: var(--green);
@@ -834,9 +858,47 @@ body.dark .boton-cerrar {
 }
 
 .redes-sociales a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.8rem;
+  height: 4.8rem;
   font-size: 3rem;
-  padding-left: 4rem;
+  margin-left: 2rem;
   color: var(--black);
+  border: 1.5px solid transparent;
+  border-radius: 50%;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+.redes-sociales a:hover,
+.icons a:hover {
+  transform: translateY(-6px) scale(1.06);
+}
+.redes-sociales a:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.16);
+}
+.redes-sociales a:nth-child(1):hover {
+  color: #2867b2;
+  border-color: #2867b2;
+}
+.redes-sociales a:nth-child(2):hover {
+  color: #111;
+  border-color: #111;
+}
+.redes-sociales a:nth-child(3):hover {
+  color: #e1306c;
+  border-color: #e1306c;
+}
+.redes-sociales a:nth-child(4):hover {
+  color: #1da1f2;
+  border-color: #1da1f2;
 }
 
 .titulo .redes-sociales a {
@@ -855,7 +917,9 @@ body.dark .boton-cerrar {
 
   .site-footer .redes-sociales a {
     font-size: 2.5rem;
-    padding-left: 2rem;
+    width: 4.2rem;
+    height: 4.2rem;
+    margin-left: 1.2rem;
     color: var(--black);
   }
 }
@@ -1401,6 +1465,10 @@ section .row .col-skill h4 {
   transition: 0.5s ease all;
   color: var(--white);
 }
+body.dark .redes-sociales a:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.5);
+}
 
 .skill > div:hover h5 {
   transform: translate(0px, -110px);
@@ -1666,6 +1734,7 @@ section .row .columns .skill img:hover {
   color: #fff;
   display: block;
   position: relative;
+  transition: transform 0.3s ease;
 }
 .icons a .layer {
   width: 7rem;
@@ -2344,5 +2413,103 @@ section .row .columns .skill img:hover {
 
   .site-services .row .recomendado {
     transform: scale(1.06) !important;
+  }
+}
+
+/* Source: card-optimization-overrides */
+
+section .row .columns,
+.servicios .row .columns,
+.site-services .row .columns,
+.proyectos .proyectos-slider .caja,
+.skill-card {
+  position: relative;
+  border: 1.5px solid transparent;
+  border-radius: 1.2rem;
+  background:
+    linear-gradient(var(--white), var(--white)) padding-box,
+    linear-gradient(135deg, rgba(0, 229, 254, 0.8), rgba(18, 31, 65, 0.55))
+      border-box;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+section .row .columns:hover,
+.servicios .row .columns:hover,
+.site-services .row .columns:hover,
+.proyectos .proyectos-slider .caja:hover,
+.skill-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 22px 36px rgba(0, 0, 0, 0.14);
+}
+
+.proyectos .proyectos-slider .caja {
+  overflow: hidden;
+  padding-bottom: 1.4rem;
+}
+
+.proyectos .proyectos-slider .caja img {
+  border-radius: 1rem;
+  opacity: 0.8;
+  transform: scale(0.88);
+}
+
+.proyectos .proyectos-slider .swiper-slide-active,
+.proyectos .proyectos-slider .caja:hover {
+  transform: translateY(-8px) scale(1.03);
+}
+
+.proyectos .proyectos-slider .swiper-slide-active img,
+.proyectos .proyectos-slider .caja:hover img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.proyectos .proyectos-slider .caja .content {
+  transform: scale(0.97);
+  opacity: 0;
+  min-height: 27rem;
+}
+
+.proyectos .proyectos-slider .swiper-slide-active .content,
+.proyectos .proyectos-slider .caja:hover .content {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.skill-card {
+  padding: 2rem 1.6rem;
+}
+
+.skill-card:hover .skills-img {
+  transform: scale(1.12);
+}
+
+.skills-img {
+  transition: transform 0.35s ease;
+}
+
+body.dark section .row .columns,
+body.dark .servicios .row .columns,
+body.dark .site-services .row .columns,
+body.dark .proyectos .proyectos-slider .caja,
+body.dark .skill-card {
+  background:
+    linear-gradient(rgb(14, 12, 12), rgb(14, 12, 12)) padding-box,
+    linear-gradient(135deg, rgba(0, 229, 254, 0.75), rgba(255, 255, 255, 0.2))
+      border-box;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
+}
+
+@media (max-width: 760px) {
+  section .row .columns:hover,
+  .servicios .row .columns:hover,
+  .site-services .row .columns:hover,
+  .proyectos .proyectos-slider .caja:hover,
+  .skill-card:hover {
+    transform: translateY(-4px) scale(1.01);
   }
 }

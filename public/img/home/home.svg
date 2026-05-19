@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 900" role="img" aria-label="Neeraj Yadav portrait placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#00e5fe"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#c9f7ff" stop-opacity="0.4"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="900" fill="url(#bg)" rx="36"/>
+  <circle cx="360" cy="330" r="165" fill="#e6f8ff"/>
+  <circle cx="360" cy="330" r="185" fill="none" stroke="url(#ring)" stroke-width="10"/>
+  <rect x="200" y="530" width="320" height="200" rx="100" fill="#e6f8ff"/>
+  <text x="360" y="355" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="110" font-weight="700" fill="#0f172a">NY</text>
+</svg>

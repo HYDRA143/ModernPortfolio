@@ -36,11 +36,11 @@ const particlesConfig = {
       },
     },
     size: {
-      value: 160,
+      value: 120,
       random: false,
       anim: {
-        enable: true,
-        speed: 10,
+        enable: false,
+        speed: 4,
         size_min: 40,
         sync: false,
       },
@@ -54,7 +54,7 @@ const particlesConfig = {
     },
     move: {
       enable: true,
-      speed: 8,
+      speed: 3,
       direction: "none",
       random: false,
       straight: false,

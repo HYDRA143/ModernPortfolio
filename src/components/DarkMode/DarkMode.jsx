@@ -5,7 +5,7 @@ const LIGHT_THEME = "light";
 
 const getInitialTheme = () => {
   const savedTheme = localStorage.getItem("theme");
-  return savedTheme === LIGHT_THEME ? LIGHT_THEME : DARK_THEME;
+  return savedTheme === DARK_THEME ? DARK_THEME : LIGHT_THEME;
 };
 
 const DarkMode = () => {
@@ -24,7 +24,7 @@ const DarkMode = () => {
       id="darkMode"
       onClick={() =>
         setTheme((currentTheme) =>
-          currentTheme === DARK_THEME ? LIGHT_THEME : DARK_THEME
+          currentTheme === DARK_THEME ? LIGHT_THEME : DARK_THEME,
         )
       }
     >

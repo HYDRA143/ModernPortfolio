@@ -7,9 +7,9 @@ const TECH_ICONS = {
   css: "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg",
   js: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg",
   jquery:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-plain-wordmark.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
   bootstrap:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
   react:
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
   redux:
@@ -141,7 +141,7 @@ export const appProjects = [
     thumbnail: "projects/project-mobile-app.jpg",
     previewImage: "projects/project-mobile-app.jpg",
     body: [
-      "Aura Wellness Native",
+      "Healthcare app",
       message(
         "projects-aura-p1",
         "Aura is a flagship cross-platform wellness application optimized for both iOS and Android. It delivers a serene user experience through high-performance animations and offline-first data sync.",

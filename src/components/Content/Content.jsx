@@ -1,13 +1,18 @@
-import React from "react";
-import ParticleHeaderBg from "../ParticlesBg/ParticlesHeader/ParticleHeaderBg";
+import React, { Suspense, lazy } from "react";
 import { PROFILE_NAME, PROFILE_URL } from "../../constants/profile";
 
 /* Multi idioma */
 import { FormattedMessage } from "react-intl";
 
+const ParticleHeaderBg = lazy(
+  () => import("../ParticlesBg/ParticlesHeader/ParticleHeaderBg"),
+);
+
 const Content = () => (
   <div className="contenido">
-    <ParticleHeaderBg />
+    <Suspense fallback={null}>
+      <ParticleHeaderBg />
+    </Suspense>
     <section className="inicio" id="inicio">
       <div className="titulo">
         <p data-aos="fade-up" data-aos-delay="600">

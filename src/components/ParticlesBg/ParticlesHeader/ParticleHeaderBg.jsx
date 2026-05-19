@@ -1,316 +1,138 @@
-import React, { useMemo, useCallback } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import Particles from "react-particles";
 import { loadFull } from "tsparticles";
 
-export default function ParticleHeaderBg() {
-    const particlesInit = useCallback(async (main) => {
-        await loadFull(main);
-    }, []);
+const ICON_SOURCES = [
+  "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg",
+  "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg",
+  "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-plain-wordmark.svg",
+  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
+];
 
-    const particleOptions = useMemo(() => ({
+export default function ParticleHeaderBg() {
+  const [shouldRender, setShouldRender] = useState(false);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const saveData = navigator.connection?.saveData;
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+    if (prefersReducedMotion || saveData || isMobile) {
+      return undefined;
+    }
+
+    let cancelled = false;
+    const start = () => {
+      if (!cancelled) {
+        setShouldRender(true);
+      }
+    };
+
+    if (typeof window.requestIdleCallback === "function") {
+      window.requestIdleCallback(start, { timeout: 1000 });
+    } else {
+      window.setTimeout(start, 200);
+    }
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const particlesInit = useCallback(async (main) => {
+    await loadFull(main);
+  }, []);
+
+  const particleOptions = useMemo(
+    () => ({
+      fpsLimit: 40,
+      detectRetina: false,
       background: {
-        position: "50% 50%",
-        repeat: "no-repeat",
-        size: "cover",
-        color: "#000"
+        color: "transparent",
       },
       fullScreen: {
-        enable: false
+        enable: false,
       },
       interactivity: {
-        
-        modes: {
-          bubble: {
-            distance: 400,
-            duration: 2,
-            opacity: 0.8,
-            size: 10,
-            divs: {
-              distance: 200,
-              duration: 0.4,
-              mix: false,
-              selectors: [],
-            },
+        events: {
+          onHover: {
+            enable: false,
           },
-          grab: {
-            distance: 400,
+          onClick: {
+            enable: false,
           },
-          repulse: {
-            divs: {
-              distance: 200,
-              duration: 0.4,
-              factor: 100,
-              speed: 1,
-              maxSpeed: 50,
-              easing: "ease-out-quad",
-              selectors: [],
-            },
-          },
+          resize: true,
         },
       },
       particles: {
-        color: {
-          value: "#ffffff",
-        },
-        links: {
-          color: {
-            value: "#000",
-          },
-          distance: 150,
-          opacity: 0.4,
-        },
-        move: {
-          attract: {
-            rotate: {
-              x: 600,
-              y: 1200,
-            },
-          },
-          enable: true,
-          outModes: {
-            bottom: "out",
-            left: "out",
-            right: "out",
-            top: "out",
-          },
-        },
         number: {
           density: {
             enable: true,
+            area: 900,
           },
-          value: 24,
-        },
-        opacity: {
-          random: {
-            enable: true,
-          },
-          value: {
-            min: 0.1,
-            max: 1,
-          },
-          animation: {
-            enable: true,
-            speed: 1,
-            minimumValue: 0.2,
-          },
-        },
-        rotate: {
-          random: {
-            enable: true,
-          },
-          animation: {
-            enable: true,
-            speed: 5,
-          },
-          direction: "random",
+          value: 10,
         },
         shape: {
-          options: {
-            character: {
-              fill: false,
-              font: "Verdana",
-              style: "",
-              value: "*",
-              weight: "400",
-            },
-            char: {
-              fill: false,
-              font: "Verdana",
-              style: "",
-              value: "*",
-              weight: "400",
-            },
-            polygon: {
-              sides: 5,
-            },
-            star: {
-              sides: 5,
-            },
-            image: [
-              {
-                src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg",
-                width: 20,
-                height: 20,
-              },
-              {
-                src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg",
-                width: 20,
-                height: 20,
-              },
-              {
-                src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg",
-                width: 20,
-                height: 20,
-              },
-              {
-                src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-plain-wordmark.svg",
-                width: 20,
-                height: 20,
-              },
-              {
-                src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-                width: 20,
-                height: 20,
-              },
-              {
-                src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-                width: 20,
-                height: 20,
-              },
-              {
-                src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-                width: 20,
-                height: 20,
-              },
-              {
-                src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-plain-wordmark.svg",
-                width: 20,
-                height: 20,
-              },
-              {
-                src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
-                width: 20,
-                height: 20,
-              },
-              {
-                src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg",
-                width: 20,
-                height: 20,
-              },
-              {
-                src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
-                width: 20,
-                height: 20,
-              },
-              {
-                src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
-                width: 20,
-                height: 20,
-              },
-              {
-                src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
-                width: 20,
-                height: 20,
-              },
-            ],
-            images: [
-              {
-                src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg",
-                width: 20,
-                height: 20,
-              },
-              {
-                src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg",
-                width: 20,
-                height: 20,
-              },
-              {
-                src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg",
-                width: 20,
-                height: 20,
-              },
-              {
-                src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-plain-wordmark.svg",
-                width: 20,
-                height: 20,
-              },
-              {
-                src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-                width: 20,
-                height: 20,
-              },
-              {
-                src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-                width: 20,
-                height: 20,
-              },
-              {
-                src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-                width: 20,
-                height: 20,
-              },
-              {
-                src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-plain-wordmark.svg",
-                width: 20,
-                height: 20,
-              },
-              {
-                src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
-                width: 20,
-                height: 20,
-              },
-              {
-                src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg",
-                width: 20,
-                height: 20,
-              },
-              {
-                src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
-                width: 20,
-                height: 20,
-              },
-              {
-                src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
-                width: 20,
-                height: 20,
-              },
-              {
-                src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
-                width: 20,
-                height: 20,
-              },
-            ],
-          },
           type: "image",
+          options: {
+            image: ICON_SOURCES.map((src) => ({
+              src,
+              width: 36,
+              height: 36,
+            })),
+          },
         },
         size: {
-          value: 50,
+          value: {
+            min: 24,
+            max: 40,
+          },
           animation: {
-            speed: 40,
-            minimumValue: 0.1,
+            enable: false,
           },
         },
-        stroke: {
-          width: "100px",
-          color: {
-            value: "#000000",
-            animation: {
-              h: {
-                count: 0,
-                enable: false,
-                offset: 0,
-                speed: 1,
-                decay: 0,
-                sync: true,
-              },
-              s: {
-                count: 0,
-                enable: false,
-                offset: 0,
-                speed: 1,
-                decay: 0,
-                sync: true,
-              },
-              l: {
-                count: 0,
-                enable: false,
-                offset: 0,
-                speed: 1,
-                decay: 0,
-                sync: true,
-              },
-            },
+        opacity: {
+          value: {
+            min: 0.55,
+            max: 0.9,
+          },
+          animation: {
+            enable: false,
+          },
+        },
+        links: {
+          enable: false,
+        },
+        move: {
+          enable: true,
+          speed: 1.4,
+          outModes: {
+            default: "out",
           },
         },
       },
-    }), []);
+      pauseOnBlur: true,
+      pauseOnOutsideViewport: true,
+    }),
+    [],
+  );
 
-    return (
-        <Particles
-          id="tsparticles"
-          init={particlesInit}
-          className="particles-2-css"
-          options={particleOptions}
-    ></Particles>
+  if (!shouldRender) {
+    return null;
+  }
+
+  return (
+    <Particles
+      id="tsparticles"
+      init={particlesInit}
+      className="particles-2-css"
+      options={particleOptions}
+    />
   );
 }

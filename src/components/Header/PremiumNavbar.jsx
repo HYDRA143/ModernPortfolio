@@ -133,14 +133,16 @@ const PremiumNavbar = ({ mode = "home" }) => {
         element: document.querySelector(`section#${item.id}`),
       })).filter((entry) => entry.element);
 
-      const scrollPosition = window.scrollY + window.innerHeight / 3;
-      for (let idx = sections.length - 1; idx >= 0; idx -= 1) {
+      let currentSection = "inicio";
+      for (let idx = 0; idx < sections.length; idx += 1) {
         const current = sections[idx];
-        if (scrollPosition >= current.element.offsetTop) {
-          setActiveSection(current.id);
-          break;
+        const top = current.element.getBoundingClientRect().top;
+        if (top <= 140) {
+          currentSection = current.id;
         }
       }
+
+      setActiveSection(currentSection);
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -178,14 +180,14 @@ const PremiumNavbar = ({ mode = "home" }) => {
   };
 
   return (
-    <nav className="fixed left-0 top-0 z-[120] w-full p-3 md:p-6 pointer-events-none">
+    <nav className="fixed left-0 top-0 z-[120] w-full p-4 md:p-7 pointer-events-none">
       <motion.div
         className="absolute left-0 right-0 top-0 h-0.5 origin-left bg-gradient-to-r from-cyan-400 to-blue-600"
         style={{ scaleX }}
       />
 
       <div
-        className={`mx-auto w-full max-w-7xl pointer-events-auto rounded-3xl border px-4 py-2.5 shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-xl transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${
+        className={`mx-auto w-full max-w-[92rem] pointer-events-auto rounded-3xl border px-6 py-3.5 shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-xl transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] md:px-7 md:py-4 ${
           isDarkTheme
             ? isScrolled
               ? "border-white/15 bg-black/70"
@@ -195,21 +197,21 @@ const PremiumNavbar = ({ mode = "home" }) => {
               : "border-white/20 bg-white/60"
         }`}
       >
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center justify-between gap-4">
           <button
             type="button"
             onClick={goHome}
             className="group flex cursor-pointer items-center gap-3"
           >
-            <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-2xl bg-white/20 shadow-xl transition-all group-hover:scale-110">
+            <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl bg-white/20 shadow-xl transition-all group-hover:scale-110">
               <img
                 src={`${import.meta.env.BASE_URL}favicon.ico`}
                 alt="Neeraj Yadav logo"
-                className="h-8 w-8 object-contain"
+                className="h-9 w-9 object-contain"
               />
             </div>
             <span
-              className={`hidden text-sm font-black uppercase tracking-tight sm:block ${
+              className={`hidden text-base font-black uppercase tracking-tight sm:block ${
                 isDarkTheme ? "text-neutral-100" : "text-neutral-900"
               }`}
             >
@@ -218,7 +220,7 @@ const PremiumNavbar = ({ mode = "home" }) => {
           </button>
 
           <div
-            className={`hidden items-center gap-1 rounded-2xl border p-1 shadow-inner lg:flex ${
+            className={`hidden items-center gap-2 rounded-2xl border p-1.5 shadow-inner lg:flex ${
               isDarkTheme
                 ? "border-white/20 bg-white/10"
                 : "border-white/50 bg-neutral-200/40"
@@ -234,7 +236,7 @@ const PremiumNavbar = ({ mode = "home" }) => {
                   type="button"
                   key={mode === "home" ? item.id : item.path}
                   onClick={() => onSelectItem(item)}
-                  className={`relative rounded-xl px-6 py-2.5 text-[11px] font-black uppercase tracking-widest transition-all duration-500 ${
+                  className={`relative rounded-xl px-7 py-3 text-xs font-black uppercase tracking-widest transition-all duration-500 ${
                     isActive
                       ? "text-white"
                       : isDarkTheme
@@ -268,7 +270,7 @@ const PremiumNavbar = ({ mode = "home" }) => {
               onClick={goContact}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className={`group relative flex items-center gap-2.5 overflow-hidden rounded-full border px-4 py-2.5 transition-colors duration-300 sm:px-5 ${
+              className={`group relative flex items-center gap-2.5 overflow-hidden rounded-full border px-5 py-3 transition-colors duration-300 sm:px-6 ${
                 isDarkTheme
                   ? "border-cyan-300 bg-cyan-500 hover:bg-transparent"
                   : "border-slate-900 bg-slate-900 hover:bg-transparent"
